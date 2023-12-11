@@ -1,5 +1,5 @@
-# projectsabisaac
-- Sabi Ertovi Isaac Btesh
+# Final Project
+- Made with love by Sabi Ertovi Isaac Btesh Babson College 2024'
 
 # Project Proposal: Stock Analysis and Information Tool
 
