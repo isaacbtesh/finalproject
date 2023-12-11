@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Ticker Input</title>
+    <style>
+        /* CSS styles for various page elements */
+        body {
+            background-color: #87CEFA;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px auto;
+            width: 300px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            /* Green background */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            /* Darker shade for hover effect */
+        }
+
+        .checkbox-group {
+            text-align: left;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Stock Performance Explorer</h1>
+    <h4>- Input stock tickers and select date ranges.
+        <div> </div>
+        - Make sure you input multiple tickers if you want the Price Comparison Graph, the other graphs only require one ticker
+        <div> </div>
+        - Submit to view stock data visualizations and AI-generated company information.</h4>
+    <form action="/" method="post">
+        <!-- Input field for stock tickers -->
+        <input type="text" id="tickers" name="tickers" placeholder="e.g., AAPL, MSFT" required>
+
+        <!-- Label and input field for start date -->
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required>
+
+        <!-- Label and input field for end date -->
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required>
+
+        <!-- Group of checkboxes for selecting graph types -->
+        <div class="checkbox-group">
+            <input type="checkbox" id="close_price" name="graph_type" value="close_price" checked>
+            <label for="close_price">Close Price Graph</label><br>
+            <input type="checkbox" id="price_comparison" name="graph_type" value="price_comparison">
+            <label for="price_comparison">Price Comparisons (Multiple Tickers)</label><br>
+            <input type="checkbox" id="daily_return" name="graph_type" value="daily_return">
+            <label for="daily_return">Daily Return Histogram</label><br>
+            <input type="checkbox" id="volume_chart" name="graph_type" value="volume_chart">
+            <label for="volume_chart">Volume Chart</label><br>
+            <input type="checkbox" id="candlestick_chart" name="graph_type" value="candlestick_chart">
+            <label for="candlestick_chart">Candlestick Chart</label>
+        </div>
+
+        <!-- Submit button for the form -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

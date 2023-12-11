@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Optimizes the page for mobile devices by controlling the width and scale -->
+    <title>Stock Graphs</title>
+    <style>
+         /* CSS styles for the webpage */
+        body {
+            background-color: #87CEFA; /* Baby blue background */
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .graph-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .graph-container {
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        .large-graph, .small-graph {
+            flex: 1 1 60%; /* Adjusted size for graphs */
+            max-width: 60%;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .gpt-response {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .go-back-button {
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .go-back-button:hover {
+            background-color: #45a049; /* Darker shade for hover effect */
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Graphs</h1>
+
+    <!-- Looping through each ticker and its graphs and responses -->
+    {% for ticker, graphs_and_responses in all_graphs_and_responses.items() %}
+        <h2>{{ ticker }}</h2>
+        {% for graph in graphs_and_responses %}
+            <div class="graph-container">
+                {% if graph[0] != 'GPT-3 Response' %}
+                <!-- If the item is not a GPT-3 response, display it as an image -->
+                    <h3>{{ graph[0] }}</h3> <!-- Graph title -->
+                    <img src="{{ graph[1] }}" alt="{{ graph[0] }}"> <!-- Graph image -->
+                {% else %}
+                <!-- If the item is a GPT-3 response, display it in a formatted box -->
+                    <div class="gpt-response">
+                        <h3>GPT-3 Company Information</h3>
+                        <p>{{ graph[1] }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <a href="/" class="go-back-button">Go Back</a> <!-- Link to go back to the previous page -->
+</body>
+</html>
